@@ -1,24 +1,61 @@
 import React from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome6";
 
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 20,
+        paddingHorizontal: 15,
+    },
+    header: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 10,
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        marginTop: 30,
+        backgroundColor: "lightgrey",
+        borderWidth: 1,
+    },
+    image: {
+        width: 400,
+        height: 500,
+    },
+    name: {
+        fontSize: 22,
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        marginVertical: 5
+    },
+    description: {
+        flex: 1,
+        fontSize: 16,
+        color: "#555",
+        lineHeight: 24,
+        textAlign: "center",
+        backgroundColor: "#f4f4f4",
+    },
+});
 const Boat = ({name, description, icon_name, picture}) => {
     return (
         <View>
-            <View style={{flexDirection: "row"}}>
+            <View style={styles.header}>
                 <Icon name={icon_name} size={20}/>
-                <Text style={{marginLeft: 10, fontSize: 20, textTransform: "uppercase"}}>{name}</Text>
+                <Text style={styles.name}>{name}</Text>
             </View>
-            <Text>{description}</Text>
-            <Image source={picture} style={{width:400, height:500}}/>
+            <Text styles={styles.description}>{description}</Text>
+            <Image source={picture} style={styles.image} />
         </View>
     );
 };
 
 const AllBoats = () => {
     return (
-        <ScrollView>
-            <Text>GetABoat - For Sale</Text>
+        <ScrollView style={styles.container}>
+            <Text style={styles.title}>GetABoat - For Sale</Text>
             <Boat name="Sea Ray 500 Sundancer"
                   description="Contoured lines and dramatic styling reveal a refined and powerful presence that will take your breath away."
                   icon_name="sailboat"
